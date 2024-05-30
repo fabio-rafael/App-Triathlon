@@ -1,0 +1,70 @@
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/build
+
+# Dependencies
+/node_modules
+
+# Angular cache
+.angular/cache
+
+# IDEs and editors
+/.idea
+/.vscode
+/*.suo
+/*.ntvs*
+/*.njsproj
+/*.sln
+
+# Logs and temporary files
+/logs
+*.log
+*.swp
+/.DS_Store
+Thumbs.db
+
+# Compiled Java class files
+*.class
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Various binary files
+*.dll
+*.exe
+*.out
+*.app
+*.pdb
+*.test
+*.o
+*.a
+*.so
+*.lib
+*.dylib
+
+# Database files
+*.sql
+*.sqlite
+
+# Certificate files
+*.pem
+*.crt
+*.key
+
+# Environment files
+.env
+.env.local
+.env.*.local
