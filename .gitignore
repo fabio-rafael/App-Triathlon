@@ -33,14 +33,6 @@ Thumbs.db
 *.pyo
 *.pyd
 
-# Package files
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
 
 # Various binary files
 *.dll
@@ -55,9 +47,7 @@ Thumbs.db
 *.lib
 *.dylib
 
-# Database files
-*.sql
-*.sqlite
+
 
 # Certificate files
 *.pem

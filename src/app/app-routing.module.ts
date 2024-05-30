@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'personal-time', component: PersonalTimeComponent }, // Rota para o Component de Tempos Pessoais
   { path: 'preTime-test', component: PreTimeTestComponent }, // Rota para o Component de Tempos Pesonalizados
   { path: 'addPreTime-test', component: AddPreTimeComponent }, // Rota para addiconar Tempos Pesonalizados
-  { path: 'editDelete-time', component: EditDeleteTimeComponent }, // Rota para editar ou eliminar Tempos Pesonalizados
+  { path: 'editDelete-time', component: EditDeleteTimeComponent }, // Rota para editar ou eliminar Tempo Pesonalizados
 ];
 
 @NgModule({
