@@ -1,0 +1,260 @@
+<div class="container">
+  <div class="card">
+    <h1 class="card-title mt-5">Triathlon App</h1>
+    <div class="menu-content">
+      <div class="input1">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Select Time</label
+            >
+          </div>
+          <select
+            class="custom-select"
+            id="inputGroupSelect01"
+            (change)="onTimeChange($event)"
+          >
+            <option
+              *ngFor="let linha of triatlo"
+              [value]="linha"
+              [selected]="linha === 'Triatlo Olímpico'"
+            >
+              {{ linha }}
+            </option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Tipo de Triatlo</label
+            >
+          </div>
+          <select
+            class="custom-select"
+            id="inputGroupSelect01"
+            (change)="onTriatloChange($event)"
+            disabled
+          >
+            <option
+              *ngFor="let linha of triatlo"
+              [value]="linha"
+              [selected]="linha === 'Triatlo Olímpico'"
+            >
+              {{ linha }}
+            </option>
+          </select>
+        </div>
+
+        <div
+          class="option"
+          style="border-top-left-radius: 10px; border-top-right-radius: 10px"
+        >
+          <label for="natacao"
+            >Swimming Time <span>[{{ distancias[0] }}]</span></label
+          >
+          <div class="tempo">
+            <label for="natacao1h">Hours</label>
+            <input
+              type="number"
+              id="natacao1h"
+              name="natacao1h"
+              #natacao1h
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="natacao1m">Minutes</label>
+            <input
+              type="number"
+              id="natacao1m"
+              name="natacao1m"
+              #natacao1m
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="natacao1s">Seconds</label>
+            <input
+              type="number"
+              id="natacao1s"
+              name="natacao1s"
+              #natacao1s
+              required
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <label for="t1">Transition Time [T1]</label>
+          <div class="tempo">
+            <label for="t11h">Hours</label>
+            <input
+              type="number"
+              id="t11h"
+              name="t11h"
+              #t11h
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="t11m">Minutes</label>
+            <input
+              type="number"
+              id="t11m"
+              name="t11m"
+              #t11m
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="t11s">Seconds</label>
+            <input
+              type="number"
+              id="t11s"
+              name="t11s"
+              #t11s
+              required
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <label for="ciclismo"
+            >Cycling Time <span>[{{ distancias[1] }}]</span></label
+          >
+          <div class="tempo">
+            <label for="ciclismo1h">Hours</label>
+            <input
+              type="number"
+              id="ciclismo1h"
+              name="ciclismo1h"
+              #ciclismo1h
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="ciclismo1m">Minutes</label>
+            <input
+              type="number"
+              id="ciclismo1m"
+              name="ciclismo1m"
+              #ciclismo1m
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="ciclismo1s">Seconds</label>
+            <input
+              type="number"
+              id="ciclismo1s"
+              name="ciclismo1s"
+              #ciclismo1s
+              required
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+        <div class="option">
+          <label for="t2">Transition Time [T2]</label>
+          <div class="tempo">
+            <label for="t21h">Hours</label>
+            <input
+              type="number"
+              id="t21h"
+              name="t21h"
+              #t21h
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="t21m">Minutes</label>
+            <input
+              type="number"
+              id="t21m"
+              name="t21m"
+              #t21m
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="t21s">Seconds</label>
+            <input
+              type="number"
+              id="t21s"
+              name="t21s"
+              #t21s
+              required
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+        <div
+          class="option"
+          style="
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+          "
+        >
+          <label for="run"
+            >Running Time <span>[{{ distancias[2] }}]</span></label
+          >
+          <div class="tempo">
+            <label for="run1h">Hours</label>
+            <input
+              type="number"
+              id="run1h"
+              name="run1h"
+              #run1h
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="run1m">Minutes</label>
+            <input
+              type="number"
+              id="run1m"
+              name="run1m"
+              #run1m
+              required
+              min="0"
+              max="1440"
+            />
+            <label for="run1s">Seconds</label>
+            <input
+              type="number"
+              id="run1s"
+              name="run1s"
+              #run1s
+              required
+              min="0"
+              max="59"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="buttons m-1 d-flex justify-content-center">
+        <button type="button" class="btn btn-success m-2" (click)="editTime()">
+          Edit Time
+        </button>
+        <button type="button" class="btn btn-danger m-2" (click)="deleteTime()">
+          Delete Time
+        </button>
+      </div>
+
+      <div class="d-flex">
+        <button
+          type="button"
+          class="btn btn-warning mt-2 ml-auto"
+          routerLink=""
+        >
+          Go back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

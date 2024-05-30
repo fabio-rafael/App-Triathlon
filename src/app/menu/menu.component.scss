@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 95%;
+    border: 5px solid black;
+    border-radius: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+
+    .card-title {
+      margin: 7px;
+      color: #333; /* Cor principal do texto */
+      font-size: 4em; /* Tamanho do texto */
+      text-shadow: 1px 1px 0 #ccc, /* Sombra mais clara */ 2px 2px 0 #bbb,
+        /* Sombra mais clara */ 3px 3px 0 #aaa,
+        /* Sombra intermediária */ 4px 4px 0 #999,
+        /* Sombra intermediária */ 5px 5px 0 #888,
+        /* Sombra intermediária */ 6px 6px 0 #777,
+        /* Sombra mais escura */ 7px 7px 0 #666; /* Sombra mais escura */
+    }
+    .opcao {
+      padding: 20px;
+
+      button {
+        width: 250px;
+        height: 80px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-weight: bold;
+        color: #fff;
+        background-color: #000;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
