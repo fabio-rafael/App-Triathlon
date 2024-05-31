@@ -8,6 +8,7 @@ import { PersonalTimeComponent } from './personalTime/personalTime.component';
 import { PreTimeTestComponent } from './preTimeTest/preTimeTest.component';
 import { AddPreTimeComponent } from './addPreTime/addPreTime.component';
 import { EditDeleteTimeComponent } from './editDeleteTime/editDeleteTime.component';
+import { AppApiService } from './services/appAPI.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { EditDeleteTimeComponent } from './editDeleteTime/editDeleteTime.compone
     AppRoutingModule,
     HttpClientModule 
   ],
-  providers: [],
+  providers: [AppApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

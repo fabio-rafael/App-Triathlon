@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppServiceService } from '../services/appService.service';
+import { AppApiService } from '../services/appAPI.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +8,7 @@ import { AppServiceService } from '../services/appService.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private appService: AppServiceService) { }
+  constructor(private appService: AppApiService) { }
 
   ngOnInit() {
     this.appService.getAllTimes();
