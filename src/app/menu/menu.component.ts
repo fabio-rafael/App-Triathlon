@@ -11,13 +11,6 @@ export class MenuComponent implements OnInit {
   constructor(private appService: AppApiService) { }
 
   ngOnInit() {
-    this.appService.getAllTimes();
-  }
-
-  getAllTimes() {
-    this.appService.getAllTimes().subscribe((res)=>{
-      
-    })
-  }
-
+    
+  } 
 }

@@ -2,35 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AppApiService {
+  private baseUrl: string = 'http://localhost:3000/api/tempos';
 
-  apiUrl = 'http://localhost:3000/api/';
+  constructor(private http: HttpClient) {}
 
-  constructor(private _http: HttpClient) { }
-
-
-
-  //Ir buscar todos os tempos
-  getAllTimes(): Observable<any> {
-    return this._http.get(this.apiUrl + 'tempos');
+  // Obter todos os tempos
+  getAll(): Observable<any> {
+    return this.http.get(this.baseUrl);
   }
 
-  //Adicionar um novo tempo
-  addTime(time: any): Observable<any> {
-    return this._http.post(this.apiUrl + 'tempos', time); // VER SE DEVO ADICIONAR TEMPO DIRETO 
+  // Obter um tempo pelo nome 
+  getByName(name: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${name}`);
+  }
+  
+  // Inserir novo tempo
+  create(data: any): Observable<any> {
+    return this.http.post(this.baseUrl, data);
   }
 
-  //Apagar um tempo 
-  deleteTime(time: any): Observable<any> {
-    return this._http.delete(this.apiUrl + 'tempos'+ time._id + '/delete');
+  // Atualizar tempo existente
+  update(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, data);
   }
 
-  //Editar um tempo
-  editTime(time: any): Observable<any> {
-    return this._http.put(this.apiUrl + 'tempos/' + time._id, time);
+  // Deletar tempo existente
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }
