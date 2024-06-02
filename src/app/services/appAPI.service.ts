@@ -16,8 +16,8 @@ export class AppApiService {
   }
 
   // Obter um tempo pelo nome 
-  getByName(name: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${name}`);
+  getTempoId(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
   
   // Inserir novo tempo

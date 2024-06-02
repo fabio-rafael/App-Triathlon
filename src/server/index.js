@@ -41,11 +41,11 @@ app.get("/api/tempos", (req, res) => {
 });
 
 // Rota para obter um tempo único
-// Teste exemplo postman localhost:3000/api/tempos/Teste 1
-app.get("/api/tempos/:name", (req, res) => {
-  const { name } = req.params;
-  const sql = "SELECT * FROM tempos WHERE Nome =?";
-  db.query(sql, [name], (err, results) => {
+// Teste exemplo postman localhost:3000/api/tempos/3
+app.get("/api/tempos/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = "SELECT * FROM tempos WHERE ID =?";
+  db.query(sql, [id], (err, results) => {
     if (err) {
       console.error("Erro ao obter os dados:", err);
       return res.status(500).send(err);

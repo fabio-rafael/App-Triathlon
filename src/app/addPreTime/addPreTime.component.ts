@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AppApiService } from '../services/appAPI.service';
-import { tempos } from '../model/Triatlo';
+
 
 @Component({
   selector: 'app-addPreTime',
@@ -9,6 +9,8 @@ import { tempos } from '../model/Triatlo';
 })
 export class AddPreTimeComponent {
 
+  constructor(private apiService: AppApiService) { }
+
   triatlo: string[] = ["Triatlo Sprint", "Triatlo Olímpico", "Meio-Ironman (70.3)", "Ironman (Full Distance)"];
   triatlo_sprint: string[] = ["750m", "20km", "5km"];
   triatlo_olimpico: string[] = ["1500m", "40km", "10km"];
@@ -16,7 +18,7 @@ export class AddPreTimeComponent {
   triatlo_ironman: string[] = ["3,8km", "180km", "42,2km"];
   triatlo_id: number[] = [1, 2, 3, 4];
 
-  tipoID: any = {};
+  tipoID: number=0;
   tempo1: any = {};
   diferenca: any = {};
   errorMessage: string = "";
@@ -141,9 +143,9 @@ export class AddPreTimeComponent {
       T2Horas: this.t21h.nativeElement.value,
       T2Minutos: this.t21m.nativeElement.value,
       T2Segundos: this.t21s.nativeElement.value,
-      RunHoras: this.run1h.nativeElement.value,
-      RunMinutos: this.run1m.nativeElement.value,
-      RunSegundos: this.run1s.nativeElement.value,
+      CorridaHoras: this.run1h.nativeElement.value,
+      CorridaMinutos: this.run1m.nativeElement.value,
+      CorridaSegundos: this.run1s.nativeElement.value,
       Total: this.formatTotalTime()
     };
 
@@ -156,5 +158,5 @@ export class AddPreTimeComponent {
     });
   }
 
-  constructor(private apiService: AppApiService) { }
+  
 }
