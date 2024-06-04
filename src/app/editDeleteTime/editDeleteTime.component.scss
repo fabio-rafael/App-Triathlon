@@ -14,7 +14,7 @@
     border: 5px solid black;
     border-radius: 20px;
     overflow-y: auto;
-    scrollbar-width: thin; 
+    scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
 
     .card-title {
@@ -24,36 +24,36 @@
       text-align: center;
       margin: 7px;
     }
-      .menu-content {
-        width: 100%;
-        padding: 20px;
-      
-        .option {
+    .menu-content {
+      width: 100%;
+      padding: 20px;
+
+      .option {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: none;
+        outline: none;
+        background-color: #f2f2f2;
+        margin-bottom: 2px;
+
+        label {
+          margin-right: 15px;
+          text-align: center;
+          margin: 7px;
+        }
+
+        .tempo {
           display: flex;
-          flex-direction: column;
           justify-content: center;
-          border: none;
-          outline: none;
-          background-color: #f2f2f2;
-          margin-bottom: 2px;
+          align-items: center;
 
-          label {
-            margin-right: 15px;
-            text-align: center;
-            margin: 7px;
-          }
-
-          .tempo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            input {
-              width: 50px;
-            }
+          input {
+            width: 50px;
+            text-align: right;
           }
         }
       }
     }
-  
+  }
 }

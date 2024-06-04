@@ -14,9 +14,8 @@
     border: 5px solid black;
     border-radius: 20px;
     overflow-y: auto;
-    scrollbar-width: thin; 
+    scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
-    
 
     .card-title {
       font-weight: bold;
@@ -52,6 +51,7 @@
 
           input {
             width: 50px;
+            text-align: right;
           }
         }
       }

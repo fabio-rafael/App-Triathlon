@@ -411,8 +411,8 @@
           </div>
         </div>
       </div>
-      <div class="table-responsive-sm">
-        <table class="table">
+      <div class="table-responsive-sm" *ngIf="compararClicked">
+        <table class="table table-sm">
           <thead class="thead-light">
             <tr>
               <th scope="col">Times</th>
@@ -426,19 +426,19 @@
           <tbody>
             <tr>
               <td>#1st Time</td>
-              <td>{{ tempo1.natacao }}</td>
-              <td>{{ tempo1.t1 }}</td>
-              <td>{{ tempo1.ciclismo }}</td>
-              <td>{{ tempo1.t2 }}</td>
-              <td>{{ tempo1.run }}</td>
+              <td>{{ formatTime(tempo1.natacao) }}</td>
+              <td>{{ formatTime(tempo1.t1) }}</td>
+              <td>{{ formatTime(tempo1.ciclismo) }}</td>
+              <td>{{ formatTime(tempo1.t2) }}</td>
+              <td>{{ formatTime(tempo1.run) }}</td>
             </tr>
             <tr>
               <td>#2nd Time</td>
-              <td>{{ tempo2.natacao }}</td>
-              <td>{{ tempo2.t1 }}</td>
-              <td>{{ tempo2.ciclismo }}</td>
-              <td>{{ tempo2.t2 }}</td>
-              <td>{{ tempo2.run }}</td>
+              <td>{{ formatTime(tempo2.natacao) }}</td>
+              <td>{{ formatTime(tempo2.t1) }}</td>
+              <td>{{ formatTime(tempo2.ciclismo) }}</td>
+              <td>{{ formatTime(tempo2.t2) }}</td>
+              <td>{{ formatTime(tempo2.run) }}</td>
             </tr>
             <tr>
               <td>Splits</td>
@@ -449,7 +449,7 @@
               <td>{{ diferenca.run }}</td>
             </tr>
             <tr>
-              <td><strong>Difference</strong></td>
+              <td><strong>Total Time Difference</strong></td>
               <td
                 [ngClass]="{
                   'text-success': tempoGanho > 0,
@@ -464,6 +464,7 @@
           </tbody>
         </table>
       </div>
+
       <div class="buttons m-1 d-flex justify-content-center">
         <button
           type="button"

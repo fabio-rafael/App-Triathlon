@@ -23,6 +23,7 @@ export class PersonalTimeComponent {
   diferenca: any = {};
   errorMessage: string = '';
 
+  compararClicked: boolean = false;
   // Referenciar os inputs
   @ViewChild('natacao1h') natacao1h!: ElementRef;
   @ViewChild('natacao1m') natacao1m!: ElementRef;
@@ -120,9 +121,18 @@ export class PersonalTimeComponent {
         this.convertToSeconds(this.diferenca.run);
 
       this.tempoGanho = this.formatTimeDifference(tempoGanhoSegundos);
+      this.compararClicked = true;
     } else {
       this.errorMessage = 'Todos os campos de tempo são obrigatórios preencher.';
     }
+  }
+
+
+  formatTime(timeInSeconds: number): string {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
+    return `${hours > 0 ? hours + 'h ' : ''}${minutes}m ${seconds}s`;
   }
 
   getTime(hoursInput: ElementRef, minutesInput: ElementRef, secondsInput: ElementRef): number {
@@ -238,5 +248,6 @@ export class PersonalTimeComponent {
     this.diferenca.run = '';
 
     this.tempoGanho = '';
+    this.compararClicked = false;
   }
 }
