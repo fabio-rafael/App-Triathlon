@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AppApiService } from '../services/appAPI.service';
 
-
 @Component({
   selector: 'app-addPreTime',
   templateUrl: './addPreTime.component.html',
@@ -18,11 +17,12 @@ export class AddPreTimeComponent {
   triatlo_ironman: string[] = ["3,8km", "180km", "42,2km"];
   triatlo_id: number[] = [1, 2, 3, 4];
 
-  tipoID: number=0;
+  tipoID: number = 2;
   tempo1: any = {};
   diferenca: any = {};
   errorMessage: string = "";
   total: any = {};
+
 
   // Referenciar os inputs 
   @ViewChild('nome') nome!: ElementRef;
@@ -72,11 +72,45 @@ export class AddPreTimeComponent {
 
   // Validar se todos os campos foram preenchidos
   validateInputs(): boolean {
-    return this.natacao1h.nativeElement.value && this.natacao1m.nativeElement.value && this.natacao1s.nativeElement.value &&
-      this.t11h.nativeElement.value && this.t11m.nativeElement.value && this.t11s.nativeElement.value &&
-      this.ciclismo1h.nativeElement.value && this.ciclismo1m.nativeElement.value && this.ciclismo1s.nativeElement.value &&
-      this.t21h.nativeElement.value && this.t21m.nativeElement.value && this.t21s.nativeElement.value &&
-      this.run1h.nativeElement.value && this.run1m.nativeElement.value && this.run1s.nativeElement.value;
+    const inputs = [
+      { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours' },
+      { value: this.natacao1m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes' },
+      { value: this.natacao1s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds' },
+      { value: this.t11h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours' },
+      { value: this.t11m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes' },
+      { value: this.t11s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds' },
+      { value: this.ciclismo1h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours' },
+      { value: this.ciclismo1m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes' },
+      { value: this.ciclismo1s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds' },
+      { value: this.t21h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours' },
+      { value: this.t21m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes' },
+      { value: this.t21s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds' },
+      { value: this.run1h.nativeElement.value, min: 0, max: 48, name: 'Running Hours' },
+      { value: this.run1m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes' },
+      { value: this.run1s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds' },
+    ];
+    const nameValue = this.nome.nativeElement.value;
+    const regex = /^[A-Za-zÀ-ú\s^]*$/;
+
+    if (nameValue === "") {
+      this.errorMessage = "Can't insert a null name";
+      return false;
+    } else if (nameValue.length < 5 || nameValue.length > 16) {
+      this.errorMessage = "Name must be between 5 and 16 characters";
+      return false;
+    } else if (!regex.test(nameValue)) {
+      this.errorMessage = "Name contains invalid characters";
+      return false;
+    }
+
+    for (let input of inputs) {
+      const value = parseInt(input.value);
+      if (isNaN(value) || value < input.min || value > input.max) {
+        this.errorMessage = `${input.name} must be between ${input.min} and ${input.max}.`;
+        return false;
+      }
+    }
+    return true;
   }
 
   // Passar tudo para segundos
@@ -124,7 +158,6 @@ export class AddPreTimeComponent {
 
   addTime() {
     if (!this.validateInputs()) {
-      this.errorMessage = 'Todos os campos de tempo são obrigatórios preencher.';
       return;
     }
 
@@ -157,6 +190,4 @@ export class AddPreTimeComponent {
       this.errorMessage = 'Erro ao inserir dados';
     });
   }
-
-  
 }

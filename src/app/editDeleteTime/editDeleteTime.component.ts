@@ -177,12 +177,34 @@ export class EditDeleteTimeComponent implements OnInit {
   }
 
   validateInputs(): boolean {
-    return this.natacao1h.nativeElement.value && this.natacao1m.nativeElement.value && this.natacao1s.nativeElement.value &&
-      this.t11h.nativeElement.value && this.t11m.nativeElement.value && this.t11s.nativeElement.value &&
-      this.ciclismo1h.nativeElement.value && this.ciclismo1m.nativeElement.value && this.ciclismo1s.nativeElement.value &&
-      this.t21h.nativeElement.value && this.t21m.nativeElement.value && this.t21s.nativeElement.value &&
-      this.run1h.nativeElement.value && this.run1m.nativeElement.value && this.run1s.nativeElement.value;
+    const inputs = [
+      { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours' },
+      { value: this.natacao1m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes' },
+      { value: this.natacao1s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds' },
+      { value: this.t11h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours' },
+      { value: this.t11m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes' },
+      { value: this.t11s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds' },
+      { value: this.ciclismo1h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours' },
+      { value: this.ciclismo1m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes' },
+      { value: this.ciclismo1s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds' },
+      { value: this.t21h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours' },
+      { value: this.t21m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes' },
+      { value: this.t21s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds' },
+      { value: this.run1h.nativeElement.value, min: 0, max: 48, name: 'Running Hours' },
+      { value: this.run1m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes' },
+      { value: this.run1s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds' },
+    ];
+
+    for (let input of inputs) {
+      const value = parseInt(input.value);
+      if (isNaN(value) || value < input.min || value > input.max) {
+        this.errorMessage = `${input.name} must be between ${input.min} and ${input.max}.`;
+        return false;
+      }
+    }
+    return true;
   }
+
 
   getTime(hoursInput: ElementRef, minutesInput: ElementRef, secondsInput: ElementRef): number {
     const hours = parseInt(hoursInput.nativeElement.value) || 0;
@@ -206,11 +228,10 @@ export class EditDeleteTimeComponent implements OnInit {
     return `${hours}:${minutes}:${seconds}`;
   }
   editTime() {
+
     if (!this.validateInputs()) {
-      this.errorMessage = 'Todos os campos de tempo são obrigatórios preencher.';
       return;
     }
-
     const data = {
       TipoID: this.tipoID,
       NatacaoHoras: this.natacao1h.nativeElement.value,

@@ -82,16 +82,47 @@ export class PersonalTimeComponent {
   }
 
   validateInputs(): boolean {
-    return this.natacao1h.nativeElement.value && this.natacao1m.nativeElement.value && this.natacao1s.nativeElement.value &&
-      this.t11h.nativeElement.value && this.t11m.nativeElement.value && this.t11s.nativeElement.value &&
-      this.ciclismo1h.nativeElement.value && this.ciclismo1m.nativeElement.value && this.ciclismo1s.nativeElement.value &&
-      this.t21h.nativeElement.value && this.t21m.nativeElement.value && this.t21s.nativeElement.value &&
-      this.run1h.nativeElement.value && this.run1m.nativeElement.value && this.run1s.nativeElement.value &&
-      this.natacao2h.nativeElement.value && this.natacao2m.nativeElement.value && this.natacao2s.nativeElement.value &&
-      this.t12h.nativeElement.value && this.t12m.nativeElement.value && this.t12s.nativeElement.value &&
-      this.ciclismo2h.nativeElement.value && this.ciclismo2m.nativeElement.value && this.ciclismo2s.nativeElement.value &&
-      this.t22h.nativeElement.value && this.t22m.nativeElement.value && this.t22s.nativeElement.value &&
-      this.run2h.nativeElement.value && this.run2m.nativeElement.value && this.run2s.nativeElement.value;
+    const inputs = [
+      { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours of 1st Time' },
+      { value: this.natacao1m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes of 1st Time' },
+      { value: this.natacao1s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds of 1st Time' },
+      { value: this.t11h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours of 1st Time' },
+      { value: this.t11m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes of 1st Time' },
+      { value: this.t11s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds of 1st Time' },
+      { value: this.ciclismo1h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours of 1st Time' },
+      { value: this.ciclismo1m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes of 1st Time' },
+      { value: this.ciclismo1s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds of 1st Time' },
+      { value: this.t21h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours of 1st Time' },
+      { value: this.t21m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes of 1st Time' },
+      { value: this.t21s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds of 1st Time' },
+      { value: this.run1h.nativeElement.value, min: 0, max: 48, name: 'Running Hours of 1st Time' },
+      { value: this.run1m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes of 1st Time' },
+      { value: this.run1s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds of 1st Time' },
+      { value: this.natacao2h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours of 2nd Time' },
+      { value: this.natacao2m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes of 2nd Time' },
+      { value: this.natacao2s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds of 2nd Time' },
+      { value: this.t12h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours of 2nd Time' },
+      { value: this.t12m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes of 2nd Time' },
+      { value: this.t12s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds of 2nd Time' },
+      { value: this.ciclismo2h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours of 2nd Time' },
+      { value: this.ciclismo2m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes of 2nd Time' },
+      { value: this.ciclismo2s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds of 2nd Time' },
+      { value: this.t22h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours of 2nd Time' },
+      { value: this.t22m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes of 2nd Time' },
+      { value: this.t22s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds of 2nd Time' },
+      { value: this.run2h.nativeElement.value, min: 0, max: 48, name: 'Running Hours of 2nd Time' },
+      { value: this.run2m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes of 2nd Time' },
+      { value: this.run2s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds of 2nd Time' },
+    ];
+
+    for (let input of inputs) {
+      const value = parseInt(input.value);
+      if (isNaN(value) || value < input.min || value > input.max) {
+        this.errorMessage = `${input.name} must be between ${input.min} and ${input.max}.`;
+        return false;
+      }
+    }
+    return true;
   }
 
   compareTimes() {
@@ -122,8 +153,6 @@ export class PersonalTimeComponent {
 
       this.tempoGanho = this.formatTimeDifference(tempoGanhoSegundos);
       this.compararClicked = true;
-    } else {
-      this.errorMessage = 'Todos os campos de tempo são obrigatórios preencher.';
     }
   }
 

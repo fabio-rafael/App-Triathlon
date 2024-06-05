@@ -107,16 +107,47 @@ export class PreTimeTestComponent implements OnInit {
 
   //Validar se todos os campos foram preenchidos
   validateInputs(): boolean {
-    return this.natacao1h.nativeElement.value && this.natacao1m.nativeElement.value && this.natacao1s.nativeElement.value &&
-      this.t11h.nativeElement.value && this.t11m.nativeElement.value && this.t11s.nativeElement.value &&
-      this.ciclismo1h.nativeElement.value && this.ciclismo1m.nativeElement.value && this.ciclismo1s.nativeElement.value &&
-      this.t21h.nativeElement.value && this.t21m.nativeElement.value && this.t21s.nativeElement.value &&
-      this.run1h.nativeElement.value && this.run1m.nativeElement.value && this.run1s.nativeElement.value &&
-      this.natacao2h.nativeElement.value && this.natacao2m.nativeElement.value && this.natacao2s.nativeElement.value &&
-      this.t12h.nativeElement.value && this.t12m.nativeElement.value && this.t12s.nativeElement.value &&
-      this.ciclismo2h.nativeElement.value && this.ciclismo2m.nativeElement.value && this.ciclismo2s.nativeElement.value &&
-      this.t22h.nativeElement.value && this.t22m.nativeElement.value && this.t22s.nativeElement.value &&
-      this.run2h.nativeElement.value && this.run2m.nativeElement.value && this.run2s.nativeElement.value;
+    const inputs = [
+      { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours' },
+      { value: this.natacao1m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes' },
+      { value: this.natacao1s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds' },
+      { value: this.t11h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours' },
+      { value: this.t11m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes' },
+      { value: this.t11s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds' },
+      { value: this.ciclismo1h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours' },
+      { value: this.ciclismo1m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes' },
+      { value: this.ciclismo1s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds' },
+      { value: this.t21h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours' },
+      { value: this.t21m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes' },
+      { value: this.t21s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds' },
+      { value: this.run1h.nativeElement.value, min: 0, max: 48, name: 'Running Hours' },
+      { value: this.run1m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes' },
+      { value: this.run1s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds' },
+      { value: this.natacao2h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours' },
+      { value: this.natacao2m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes' },
+      { value: this.natacao2s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds' },
+      { value: this.t12h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours' },
+      { value: this.t12m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes' },
+      { value: this.t12s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds' },
+      { value: this.ciclismo2h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours' },
+      { value: this.ciclismo2m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes' },
+      { value: this.ciclismo2s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds' },
+      { value: this.t22h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours' },
+      { value: this.t22m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes' },
+      { value: this.t22s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds' },
+      { value: this.run2h.nativeElement.value, min: 0, max: 48, name: 'Running Hours' },
+      { value: this.run2m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes' },
+      { value: this.run2s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds' },
+    ];
+
+    for (let input of inputs) {
+      const value = parseInt(input.value);
+      if (isNaN(value) || value < input.min || value > input.max) {
+        this.errorMessage = `${input.name} of your personal time must be between ${input.min} and ${input.max}.`;
+        return false;
+      }
+    }
+    return true;
   }
 
   // Comparar os tempos e fazer os calculos para a tabela 
@@ -149,8 +180,6 @@ export class PreTimeTestComponent implements OnInit {
       this.tempoGanho = this.formatTimeDifference(tempoGanhoSegundos);
 
       this.compararClicked = true;
-    } else {
-      this.errorMessage = 'Todos os campos de tempo são obrigatórios preencher.';
     }
   }
 

@@ -53,7 +53,7 @@
               #natacao1h
               required
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="natacao1m">Minutes</label>
             <input
@@ -63,7 +63,7 @@
               #natacao1m
               required
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="natacao1s">Seconds</label>
             <input
@@ -88,7 +88,7 @@
               #t11h
               required
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="t11m">Minutes</label>
             <input
@@ -98,7 +98,7 @@
               #t11m
               required
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="t11s">Seconds</label>
             <input
@@ -125,7 +125,7 @@
               #ciclismo1h
               required
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="ciclismo1m">Minutes</label>
             <input
@@ -135,7 +135,7 @@
               #ciclismo1m
               required
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="ciclismo1s">Seconds</label>
             <input
@@ -160,7 +160,7 @@
               #t21h
               required
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="t21m">Minutes</label>
             <input
@@ -170,7 +170,7 @@
               #t21m
               required
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="t21s">Seconds</label>
             <input
@@ -197,7 +197,7 @@
               #run1h
               required
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="run1m">Minutes</label>
             <input
@@ -207,7 +207,7 @@
               #run1m
               required
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="run1s">Seconds</label>
             <input
@@ -238,7 +238,9 @@
             Delete Time
           </button>
         </div>
-
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
         <div class="d-flex">
           <button
             type="button"

@@ -53,7 +53,7 @@
               #natacao1h
               disabled
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="natacao1m">Minutes</label>
             <input
@@ -63,7 +63,7 @@
               #natacao1m
               disabled
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="natacao1s">Seconds</label>
             <input
@@ -88,7 +88,7 @@
               #t11h
               disabled
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="t11m">Minutes</label>
             <input
@@ -98,7 +98,7 @@
               #t11m
               disabled
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="t11s">Seconds</label>
             <input
@@ -125,7 +125,7 @@
               #ciclismo1h
               disabled
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="ciclismo1m">Minutes</label>
             <input
@@ -135,7 +135,7 @@
               #ciclismo1m
               disabled
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="ciclismo1s">Seconds</label>
             <input
@@ -160,7 +160,7 @@
               #t21h
               disabled
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="t21m">Minutes</label>
             <input
@@ -170,7 +170,7 @@
               #t21m
               disabled
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="t21s">Seconds</label>
             <input
@@ -184,7 +184,14 @@
             />
           </div>
         </div>
-        <div class="option">
+        <div
+          class="option"
+          style="
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding-bottom: 10px;
+          "
+        >
           <label for="run"
             >Running Time <span>[{{ distancias[2] }}]</span></label
           >
@@ -197,7 +204,7 @@
               #run1h
               disabled
               min="0"
-              max="1440"
+              max="48"
             />
             <label for="run1m">Minutes</label>
             <input
@@ -207,7 +214,7 @@
               #run1m
               disabled
               min="0"
-              max="1440"
+              max="59"
             />
             <label for="run1s">Seconds</label>
             <input
@@ -241,7 +248,7 @@
                 #natacao2h
                 required
                 min="0"
-                max="1440"
+                max="48"
               />
               <label for="natacao2m">Minutes</label>
               <input
@@ -251,7 +258,7 @@
                 #natacao2m
                 required
                 min="0"
-                max="1440"
+                max="59"
               />
               <label for="natacao2s">Seconds</label>
               <input
@@ -276,7 +283,7 @@
                 #t12h
                 required
                 min="0"
-                max="1440"
+                max="48"
               />
               <label for="t12m">Minutes</label>
               <input
@@ -286,7 +293,7 @@
                 #t12m
                 required
                 min="0"
-                max="1440"
+                max="59"
               />
               <label for="t12s">Seconds</label>
               <input
@@ -313,7 +320,7 @@
                 #ciclismo2h
                 required
                 min="0"
-                max="1440"
+                max="48"
               />
               <label for="ciclismo2m">Minutes</label>
               <input
@@ -323,7 +330,7 @@
                 #ciclismo2m
                 required
                 min="0"
-                max="1440"
+                max="59"
               />
               <label for="ciclismo2s">Seconds</label>
               <input
@@ -348,7 +355,7 @@
                 #t22h
                 required
                 min="0"
-                max="1440"
+                max="48"
               />
               <label for="t22m">Minutes</label>
               <input
@@ -358,7 +365,7 @@
                 #t22m
                 required
                 min="0"
-                max="1440"
+                max="59"
               />
               <label for="t22s">Seconds</label>
               <input
@@ -377,6 +384,7 @@
             style="
               border-bottom-left-radius: 10px;
               border-bottom-right-radius: 10px;
+              padding-bottom: 10px;
             "
           >
             <label for="run2h"
@@ -391,7 +399,7 @@
                 #run2h
                 required
                 min="0"
-                max="1440"
+                max="48"
               />
               <label for="run2m">Minutes</label>
               <input
@@ -401,7 +409,7 @@
                 #run2m
                 required
                 min="0"
-                max="1440"
+                max="59"
               />
               <label for="run2s">Seconds</label>
               <input
@@ -445,7 +453,7 @@
                 <td>{{ formatTime(tempo2.t2) }}</td>
                 <td>{{ formatTime(tempo2.run) }}</td>
               </tr>
-              <tr>
+              <tr></tr>
               <tr>
                 <td>Splits</td>
                 <td>{{ diferenca.natacao }}</td>
@@ -483,7 +491,9 @@
             Reset
           </button>
         </div>
-
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
         <div class="d-flex">
           <button
             type="button"
