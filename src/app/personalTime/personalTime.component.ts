@@ -82,6 +82,8 @@ export class PersonalTimeComponent {
   }
 
   validateInputs(): boolean {
+    this.errorMessage = '';
+
     const inputs = [
       { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours of 1st Time' },
       { value: this.natacao1m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes of 1st Time' },
@@ -279,4 +281,15 @@ export class PersonalTimeComponent {
     this.tempoGanho = '';
     this.compararClicked = false;
   }
+
+  getTimeClass(time1: number, time2: number): string {
+    if (time1 > time2) {
+      return 'text-danger';
+    } else if (time1 < time2) {
+      return 'text-success';
+    } else {
+      return '';
+    }
+  }
+
 }

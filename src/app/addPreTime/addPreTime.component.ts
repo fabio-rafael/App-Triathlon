@@ -95,11 +95,11 @@ export class AddPreTimeComponent {
     if (nameValue === "") {
       this.errorMessage = "Can't insert a null name";
       return false;
-    } else if (nameValue.length < 5 || nameValue.length > 16) {
-      this.errorMessage = "Name must be between 5 and 16 characters";
+    } else if (nameValue.length < 5 || nameValue.length > 100) {
+      this.errorMessage = "Name must be between 5 and 100 characters";
       return false;
     } else if (!regex.test(nameValue)) {
-      this.errorMessage = "Name contains invalid characters";
+      this.errorMessage = "Name contains invalid characters , must contain only letters and accents";
       return false;
     }
 

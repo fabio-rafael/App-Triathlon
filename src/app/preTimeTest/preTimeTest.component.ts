@@ -107,22 +107,16 @@ export class PreTimeTestComponent implements OnInit {
 
   //Validar se todos os campos foram preenchidos
   validateInputs(): boolean {
+    this.errorMessage = '';
+
+
+    if (!this.selectedTempo) {
+      this.errorMessage = 'Please select a time before comparing.';
+      return false;
+    }
+
     const inputs = [
-      { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours' },
-      { value: this.natacao1m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes' },
-      { value: this.natacao1s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds' },
-      { value: this.t11h.nativeElement.value, min: 0, max: 48, name: 'T1 Hours' },
-      { value: this.t11m.nativeElement.value, min: 0, max: 59, name: 'T1 Minutes' },
-      { value: this.t11s.nativeElement.value, min: 0, max: 59, name: 'T1 Seconds' },
-      { value: this.ciclismo1h.nativeElement.value, min: 0, max: 48, name: 'Cycling Hours' },
-      { value: this.ciclismo1m.nativeElement.value, min: 0, max: 59, name: 'Cycling Minutes' },
-      { value: this.ciclismo1s.nativeElement.value, min: 0, max: 59, name: 'Cycling Seconds' },
-      { value: this.t21h.nativeElement.value, min: 0, max: 48, name: 'T2 Hours' },
-      { value: this.t21m.nativeElement.value, min: 0, max: 59, name: 'T2 Minutes' },
-      { value: this.t21s.nativeElement.value, min: 0, max: 59, name: 'T2 Seconds' },
-      { value: this.run1h.nativeElement.value, min: 0, max: 48, name: 'Running Hours' },
-      { value: this.run1m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes' },
-      { value: this.run1s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds' },
+
       { value: this.natacao2h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours' },
       { value: this.natacao2m.nativeElement.value, min: 0, max: 59, name: 'Swimming Minutes' },
       { value: this.natacao2s.nativeElement.value, min: 0, max: 59, name: 'Swimming Seconds' },
@@ -140,6 +134,7 @@ export class PreTimeTestComponent implements OnInit {
       { value: this.run2s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds' },
     ];
 
+
     for (let input of inputs) {
       const value = parseInt(input.value);
       if (isNaN(value) || value < input.min || value > input.max) {
@@ -148,11 +143,15 @@ export class PreTimeTestComponent implements OnInit {
       }
     }
     return true;
+
+
   }
 
   // Comparar os tempos e fazer os calculos para a tabela 
   compareTimes() {
     if (this.validateInputs()) {
+
+
       this.tempo1.natacao = this.getTime(this.natacao1h, this.natacao1m, this.natacao1s);
       this.tempo1.t1 = this.getTime(this.t11h, this.t11m, this.t11s);
       this.tempo1.ciclismo = this.getTime(this.ciclismo1h, this.ciclismo1m, this.ciclismo1s);
@@ -435,4 +434,14 @@ export class PreTimeTestComponent implements OnInit {
     this.tipoTriatloNome = value;
   }
 
+
+  getTimeClass(time1: number, time2: number): string {
+    if (time1 > time2) {
+      return 'text-danger';
+    } else if (time1 < time2) {
+      return 'text-success';
+    } else {
+      return '';
+    }
+  }
 }
