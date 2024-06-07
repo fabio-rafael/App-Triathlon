@@ -30,7 +30,7 @@ db.connect((err) => {
 // Rotas para obter dados
 // Teste exemplo postman localhost:3000/api/tempos/
 app.get("/api/tempos", (req, res) => {
-  const sql = "SELECT * FROM tempos";
+  const sql = "SELECT * FROM tempos ORDER BY total";
   db.query(sql, (err, results) => {
     if (err) {
       console.error("Erro ao obter os dados:", err);

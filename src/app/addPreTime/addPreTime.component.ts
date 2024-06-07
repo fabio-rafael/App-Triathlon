@@ -10,7 +10,7 @@ export class AddPreTimeComponent {
 
   constructor(private apiService: AppApiService) { }
 
-  triatlo: string[] = ["Triatlo Sprint", "Triatlo Olímpico", "Meio-Ironman (70.3)", "Ironman (Full Distance)"];
+  triatlo: string[] = ["Sprint Triathlon", "Olympic Triathlon", "Half-Ironman (70.3)", "Ironman (Full Distance)"];
   triatlo_sprint: string[] = ["750m", "20km", "5km"];
   triatlo_olimpico: string[] = ["1500m", "40km", "10km"];
   triatlo_meio_ironman: string[] = ["1,9km", "90km", "21,1km"];
@@ -48,15 +48,15 @@ export class AddPreTimeComponent {
     const selectedTriatlo = event.target.value;
 
     switch (selectedTriatlo) {
-      case 'Triatlo Sprint':
+      case 'Sprint Triathlon':
         this.distancias = this.triatlo_sprint;
         this.tipoID = this.triatlo_id[0];
         break;
-      case 'Triatlo Olímpico':
+      case 'Olympic Triathlon':
         this.distancias = this.triatlo_olimpico;
         this.tipoID = this.triatlo_id[1];
         break;
-      case 'Meio-Ironman (70.3)':
+      case 'Half-Ironman (70.3)':
         this.distancias = this.triatlo_meio_ironman;
         this.tipoID = this.triatlo_id[2];
         break;
@@ -92,8 +92,9 @@ export class AddPreTimeComponent {
     const nameValue = this.nome.nativeElement.value;
     const regex = /^[A-Za-zÀ-ú\s^]*$/;
 
+
     if (nameValue === "") {
-      this.errorMessage = "Can't insert a null name";
+      this.errorMessage = "You must insert a valid name";
       return false;
     } else if (nameValue.length < 5 || nameValue.length > 100) {
       this.errorMessage = "Name must be between 5 and 100 characters";
