@@ -6,12 +6,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./personalTime.component.scss'],
 })
 export class PersonalTimeComponent {
-  triatlo: string[] = [
-    'Triatlo Sprint',
-    'Triatlo Olímpico',
-    'Meio-Ironman (70.3)',
-    'Ironman (Full Distance)',
-  ];
+  triatlo: string[] = ["Sprint Triathlon", "Olympic Triathlon", "Half-Ironman (70.3)", "Ironman (Full Distance)"];
   triatlo_sprint: string[] = ['750m', '20km', '5km'];
   triatlo_olimpico: string[] = ['1500m', '40km', '10km'];
   triatlo_meio_ironman: string[] = ['1,9km', '90km', '21,1km'];
@@ -63,13 +58,13 @@ export class PersonalTimeComponent {
     const selectedTriatlo = event.target.value;
 
     switch (selectedTriatlo) {
-      case 'Triatlo Sprint':
+      case 'Sprint Triathlon':
         this.distancias = this.triatlo_sprint;
         break;
-      case 'Triatlo Olímpico':
+      case 'Olympic Triathlon':
         this.distancias = this.triatlo_olimpico;
         break;
-      case 'Meio-Ironman (70.3)':
+      case 'Half-Ironman (70.3)':
         this.distancias = this.triatlo_meio_ironman;
         break;
       case 'Ironman (Full Distance)':
