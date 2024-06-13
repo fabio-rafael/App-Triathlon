@@ -255,14 +255,14 @@ export class EditDeleteTimeComponent implements OnInit {
     const tempoId = this.selectedTempo.ID;
 
     this.apiService.update(tempoId, data).subscribe(response => {
-      console.log('Dados atualizados com sucesso', response);
-      alert('Dados atualizados com sucesso');
+      console.log('Dados atualizados com sucesso!', response);
+      alert('Dados atualizados com sucesso!');
       this.router.routeReuseStrategy.shouldReuseRoute = () => false; // Forçar a atualização da rota
       this.router.onSameUrlNavigation = 'reload'; // Recarregar a pagina atual
       this.router.navigate([this.router.url]);
     }, error => {
-      console.error('Erro ao atualizar dados', error);
-      this.errorMessage = 'Erro ao atualizar dados';
+      console.error('Erro ao atualizar dados!', error);
+      this.errorMessage = 'Erro ao atualizar dados!';
     });
   }
 
@@ -271,18 +271,18 @@ export class EditDeleteTimeComponent implements OnInit {
       const tempoId = this.selectedTempo.ID;
       this.apiService.delete(tempoId).subscribe((response) => {
         this.tempos = this.tempos.filter(t => t.ID !== tempoId);
-        console.log('Dados eliminados com sucesso', response);
-        alert('Dados eliminados com sucesso')
+        console.log('Dados eliminados com sucesso!', response);
+        alert('Dados eliminados com sucesso!')
         this.cleanup();
         this.router.routeReuseStrategy.shouldReuseRoute = () => false; // Forçar a atualização da rota
         this.router.onSameUrlNavigation = 'reload'; // Recarregar a pagina atual
         this.router.navigate([this.router.url]);
       }, error => {
-        console.error('Erro ao eliminar dados', error);
-        this.errorMessage = 'Erro ao eliminar dados';
+        console.error('Erro ao eliminar dados!', error);
+        this.errorMessage = 'Erro ao eliminar dados!';
       });
     } else {
-      this.errorMessage = 'Nenhum tempo selecionado para deletar';
+      this.errorMessage = 'Nenhum tempo selecionado para eliminar!';
     }
   }
 
