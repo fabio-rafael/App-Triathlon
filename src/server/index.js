@@ -9,7 +9,7 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Configuração do banco de dados MySQL
+// Configuração da base de dados MySQL
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -18,13 +18,13 @@ const db = mysql.createConnection({
   port: 3307,
 });
 
-//Conexão através do npm run server
+//Ligação através do npm run server
 db.connect((err) => {
   if (err) {
-    console.error("Erro ao conectar ao banco de dados:", err);
+    console.error("Erro ao ligar à base de dados:", err);
     return;
   }
-  console.log("Conectado ao banco de dados MySQL");
+  console.log("Ligado à base de dados MySQL!");
 });
 
 // Rotas para obter dados
@@ -51,7 +51,7 @@ app.get("/api/tempos/:id", (req, res) => {
       return res.status(500).send(err);
     }
     if (results.length === 0) {
-      return res.status(404).send({ message: "Registro não encontrado" });
+      return res.status(404).send({ message: "Registo não encontrado!" });
     }
     res.json(results[0]);
   });
@@ -81,7 +81,7 @@ app.put("/api/tempos/:id", (req, res) => {
       return res.status(500).send(err);
     }
     if (results.affectedRows === 0) {
-      return res.status(404).send({ message: "Registro não encontrado" });
+      return res.status(404).send({ message: "Registo não encontrado!" });
     }
     res.json(results);
   });
@@ -94,11 +94,11 @@ app.delete("/api/tempos/:id", (req, res) => {
   const sql = "DELETE FROM tempos WHERE ID = ?";
   db.query(sql, [id], (err, results) => {
     if (err) {
-      console.error("Erro ao deletar o registro:", err);
+      console.error("Erro ao apagar o registo:", err);
       return res.status(500).send(err);
     }
     if (results.affectedRows === 0) {
-      return res.status(404).send({ message: "Registro não encontrado" });
+      return res.status(404).send({ message: "Registo não encontrado!" });
     }
     res.json(results);
   });

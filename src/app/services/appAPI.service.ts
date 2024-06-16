@@ -15,11 +15,11 @@ export class AppApiService {
     return this.http.get(this.baseUrl);
   }
 
-  // Obter um tempo pelo nome 
+  // Obter um tempo pelo nome
   getTempoId(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
-  
+
   // Inserir novo tempo
   create(data: any): Observable<any> {
     return this.http.post(this.baseUrl, data);
@@ -30,7 +30,7 @@ export class AppApiService {
     return this.http.put(`${this.baseUrl}/${id}`, data);
   }
 
-  // Deletar tempo existente
+  // Apagar tempo existente
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
