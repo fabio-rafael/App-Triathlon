@@ -94,8 +94,10 @@ export class PersonalTimeComponent implements OnInit {
     }
   }
 
+
   validateInputs(): boolean {
     this.errorMessage = '';
+
 
     const inputs = [
       { value: this.natacao1h.nativeElement.value, min: 0, max: 48, name: 'Swimming Hours of 1st Time' },
@@ -129,6 +131,7 @@ export class PersonalTimeComponent implements OnInit {
       { value: this.run2m.nativeElement.value, min: 0, max: 59, name: 'Running Minutes of 2nd Time' },
       { value: this.run2s.nativeElement.value, min: 0, max: 59, name: 'Running Seconds of 2nd Time' },
     ];
+
 
     for (let input of inputs) {
       const value = parseInt(input.value);
