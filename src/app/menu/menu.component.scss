@@ -19,14 +19,11 @@
 
     .card-title {
       margin: 7px;
-      color: #333; /* Cor principal do texto */
-      font-size: 4em; /* Tamanho do texto */
-      text-shadow: 1px 1px 0 #ccc, /* Sombra mais clara */ 2px 2px 0 #bbb,
-        /* Sombra mais clara */ 3px 3px 0 #aaa,
-        /* Sombra intermediária */ 4px 4px 0 #999,
-        /* Sombra intermediária */ 5px 5px 0 #888,
-        /* Sombra intermediária */ 6px 6px 0 #777,
-        /* Sombra mais escura */ 7px 7px 0 #666; /* Sombra mais escura */
+      color: #333;
+      font-size: 4em;
+
+      text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #bbb, 3px 3px 0 #aaa,
+        4px 4px 0 #999, 5px 5px 0 #888, 6px 6px 0 #777, 7px 7px 0 #666;
     }
     .opcao {
       padding: 20px;
@@ -41,7 +38,14 @@
         font-weight: bold;
         color: #fff;
         background-color: #000;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
+      }
+      button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: #000 2px solid;
+        transform: skewY(1deg);
+        transform: scale(1.15);
       }
     }
   }

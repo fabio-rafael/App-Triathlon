@@ -1,12 +1,13 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { AppApiService } from '../services/appAPI.service';
+import anime from 'animejs/lib/anime.es.js'
 
 @Component({
   selector: 'app-addPreTime',
   templateUrl: './addPreTime.component.html',
   styleUrls: ['./addPreTime.component.scss']
 })
-export class AddPreTimeComponent {
+export class AddPreTimeComponent implements OnInit {
 
   constructor(private apiService: AppApiService) { }
 
@@ -24,6 +25,23 @@ export class AddPreTimeComponent {
   total: any = {};
 
 
+  ngOnInit() {
+    const textWrapper = document.querySelector('#cubed');
+    if (textWrapper && textWrapper.textContent) {
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter' style='display:inline-block;'>$&</span>");
+
+      anime.timeline({ loop: false })
+        .add({
+          targets: '#cubed .letter',
+          translateX: [40, 0],
+          translateZ: 0,
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1200,
+          delay: (el, i) => 500 + 30 * i
+        });
+    }
+  }
   // Referenciar os inputs 
   @ViewChild('nome') nome!: ElementRef;
   @ViewChild('natacao1h') natacao1h!: ElementRef;

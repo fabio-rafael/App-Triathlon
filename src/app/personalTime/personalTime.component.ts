@@ -1,11 +1,12 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import anime from 'animejs/lib/anime.es.js'
 
 @Component({
   selector: 'app-personalTime',
   templateUrl: './personalTime.component.html',
   styleUrls: ['./personalTime.component.scss'],
 })
-export class PersonalTimeComponent {
+export class PersonalTimeComponent implements OnInit {
   triatlo: string[] = ["Sprint Triathlon", "Olympic Triathlon", "Half-Ironman (70.3)", "Ironman (Full Distance)"];
   triatlo_sprint: string[] = ['750m', '20km', '5km'];
   triatlo_olimpico: string[] = ['1500m', '40km', '10km'];
@@ -52,6 +53,23 @@ export class PersonalTimeComponent {
   @ViewChild('run2m') run2m!: ElementRef;
   @ViewChild('run2s') run2s!: ElementRef;
 
+  ngOnInit() {
+    const textWrapper = document.querySelector('#cubed');
+    if (textWrapper && textWrapper.textContent) {
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter' style='display:inline-block;'>$&</span>");
+
+      anime.timeline({ loop: false })
+        .add({
+          targets: '#cubed .letter',
+          translateX: [40, 0],
+          translateZ: 0,
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1200,
+          delay: (el, i) => 500 + 30 * i
+        });
+    }
+  }
   distancias: string[] = this.triatlo_olimpico;
 
   onTriatloChange(event: any) {
