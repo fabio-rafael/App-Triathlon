@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { AppApiService } from '../services/appAPI.service';
+import { Router } from '@angular/router';
 import anime from 'animejs/lib/anime.es.js'
 
 @Component({
@@ -9,7 +10,7 @@ import anime from 'animejs/lib/anime.es.js'
 })
 export class AddPreTimeComponent implements OnInit {
 
-  constructor(private apiService: AppApiService) { }
+  constructor(private apiService: AppApiService, private router: Router) { }
 
   triatlo: string[] = ["Sprint Triathlon", "Olympic Triathlon", "Half-Ironman (70.3)", "Ironman (Full Distance)"];
   triatlo_sprint: string[] = ["750m", "20km", "5km"];
@@ -23,6 +24,7 @@ export class AddPreTimeComponent implements OnInit {
   diferenca: any = {};
   errorMessage: string = "";
   total: any = {};
+
 
 
   ngOnInit() {
@@ -203,6 +205,10 @@ export class AddPreTimeComponent implements OnInit {
 
     this.apiService.create(data).subscribe(response => {
       console.log('Dados inseridos com sucesso', response);
+      alert('Dados inseridos com sucesso!');
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false; // Forçar a atualização da rota
+      this.router.onSameUrlNavigation = 'reload'; // Recarregar a pagina atual
+      this.router.navigate([this.router.url]);
       this.cleanup();
     }, error => {
       console.error('Erro ao inserir dados', error);
